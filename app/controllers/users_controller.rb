@@ -5,9 +5,10 @@ class UsersController < ApplicationController
 
   def create
     # user = User.new :first_name, :last_name, :email, :password_digest
-    user = User.new user_params
-    if user.save
-      session[:user_id] = user.id
+    @user = User.new user_params
+    if @user.save
+      UserMailer.welcome_email(@user).deliver_later
+      session[:user_id] = @user.id
       redirect_to "/"
     else
       redirect_to "/signup"
