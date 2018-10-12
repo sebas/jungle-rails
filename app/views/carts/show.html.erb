@@ -4,6 +4,15 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if enhanced_cart.length == 0 %>
+    <div class="panel panel-default items">
+        <h3 class="card-title">Your car is empty</h3>
+        <p class="card-text">Add some products and come back.</p>
+      <div class="flex-row">
+          <a class="card-link"><%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %></a>
+      </div>
+    </div>
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -48,5 +57,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
